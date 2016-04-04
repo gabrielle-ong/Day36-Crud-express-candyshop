@@ -1,0 +1,12 @@
+ <div class="container">
+       <% candies.forEach( candy => { %>
+           <ul>
+               <li><b> Name: </b> <%= candy.name %></li>
+               <li><b> Color: </b> <%= candy.color %></li>
+               <button id="update" class="btn btn-info"><%- link_to('update', `/candies/${candy._id}`) %></button>
+                <form method="POST" action=<%= "/candies/" + candy._id + "?_method=DELETE" %> >
+                  <button id="update" class="btn btn-warning">Delete</button>
+                </form>
+            </ul>
+        <% }) %>
+    </div>
