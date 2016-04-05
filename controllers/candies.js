@@ -31,10 +31,10 @@ function createCandy(request, response){
 // GET
 function getCandy(request, response) {
   var id = request.params.id;
-
+   
   Candy.findById({_id: id}, function(error, candy) {
     if(error) response.json({message: 'Could not find candy b/c:' + error});
-    response.render('update', {candy: candy} );
+    response.json({candy: candy} );
   });
 }
 

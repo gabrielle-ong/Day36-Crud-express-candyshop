@@ -4,16 +4,48 @@
     <meta charset="UTF-8">
     <title>Candy App</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="stylesheets/main.css"> 
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <script defer src="/client.js"></script>
 </head>
 
 <body>
     <h1>Candy Shop</h1>
-    <% include ./partials/candy/index %>
+     <div class="container">
+       <% candies.forEach( candy => { %>
+           <ul data-id="<%= candy.id %>" data-name="<%= candy.name %>" data-color="<%= candy.color %>">
+               <li><b> Name: </b> <%= candy.name %></li>
+               <li><b> Color: </b><%= candy.color %></li>
+               <button class="update">Update</button>
+                <form method="POST" action=<%= "/candies/" + candy._id + "?_method=DELETE" %> >
+                  <button id="delete" class="btn btn-warning">Delete</button>
+                </form>
+            </ul>
+        <% }) %>
+    </div>
     <hr>
-    <div class="container">
+    <div id="formCreate" class="container">
         <% include ./partials/candy/form %>
-    </div> 
+    </div>
+    
+    <div id="formUpdate" class="container">
+        <h2>Update Candy</h2>
+        <form id="patch" method="POST">
+            <div class="form-group col-md-4">
+              <input id="nameInput" name="name" class="form-control" value=""/>
+            </div>
+            <div class="form-group col-md-4">
+              <input id="colorInput" name="color"  class="form-control" value=""/>
+            </div>
+            <div class="form-group col-md-4">
+              <button type="submit" class="btn btn-primary col-md-12"> Update </button>
+            </div>
+        </form>
+
+        <form id="post" method="POST">
+          <button id="delete" class="btn btn-warning col-md-3">Delete</button>
+        </form>
+        
+    </div>
     <footer>
         <% include ./partials/candy/footer %>
     </footer>

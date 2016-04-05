@@ -18,3 +18,13 @@ ul
 {
     list-style-type: none;
 }
+
+#formCreate {
+    display: flex;
+/*    visibility: visible;*/
+}
+
+#formUpdate {
+    display: none;
+/*    visibility: hidden;*/
+}
